@@ -1,6 +1,6 @@
 {% if page.type_name == "Calendar" or page.is_homepage? == true %}
 
-<a href="{{ event.full_url }}" title="Add to Calendar" class="addthisevent" id="{{ event.id }}" data-track="_gaq.push(['_trackEvent','AddtoCalendar','click','ate-calendar'])">
+<a href="{{ event.full_url }}" title="Add to Calendar" class="addthisevent" id="{{ event.id }}">
   Add to Calendar
   <span class="_start">{{ event.event.local_start_at | date: '%m/%d/%Y %H:%M:%S' }} </span>
   <span class="_end">{{ event.event.local_end_at | date: '%m/%d/%Y %H:%M:%S' }}</span>
@@ -17,7 +17,7 @@
 
 {% else %}
 
-<a href="{{ event.full_url }}" title="Add to Calendar" class="addthisevent" id="{{ page.id }}" data-track="_gaq.push(['_trackEvent','AddtoCalendar','click','ate-calendar'])">
+<a href="{{ page.full_url }}" title="Add to Calendar" class="addthisevent" id="{{ page.id }}">
   Add to Calendar
   <span class="_start">{{ page.event.local_start_at | date: '%m/%d/%Y %H:%M:%S' }} </span>
   <span class="_end">{{ page.event.local_end_at | date: '%m/%d/%Y %H:%M:%S' }}</span>
