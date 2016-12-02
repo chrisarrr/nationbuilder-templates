@@ -1,4 +1,4 @@
-{% if page.slug == "events" or page.is_homepage? == true %}
+{% if page.type_name == "Calendar" or page.is_homepage? == true %}
 
 <a href="{{ event.full_url }}" title="Add to Calendar" class="addthisevent" id="{{ event.id }}" data-track="_gaq.push(['_trackEvent','AddtoCalendar','click','ate-calendar'])">
   Add to Calendar
