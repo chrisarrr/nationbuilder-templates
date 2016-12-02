@@ -1,0 +1,52 @@
+{% if page.slug == "events" or page.is_homepage? == true %}
+
+<a href="{{ event.full_url }}" title="Add to Calendar" class="addthisevent" id="{{ event.id }}" data-track="_gaq.push(['_trackEvent','AddtoCalendar','click','ate-calendar'])">
+  Add to Calendar
+  <span class="_start">{{ event.event.local_start_at | date: '%m/%d/%Y %H:%M:%S' }} </span>
+  <span class="_end">{{ event.event.local_end_at | date: '%m/%d/%Y %H:%M:%S' }}</span>
+  <span class="_zonecode">15</span>
+  <span class="_summary">{{ event.headline }}</span>
+  <span class="_description">Check {{ event.full_url }} for more info</span>
+  <span class="_location">{{ event.event.venue_address.one_line }}</span>
+  <span class="_organizer">{{ event.event.contact_name }}</span>
+  <span class="_organizer_email"> {{ event.event.contact_email }}</span>
+  <span class="_facebook_event">{{ event.event.facebook_url }}</span>
+  <span class="_all_day_event">{% if event.event.is_multi_day? %}TRUE{% else %}FALSE{% endif %}</span>
+  <span class="_date_format">MM/DD/YYYY</span>
+</a>
+
+{% else %}
+
+<a href="{{ event.full_url }}" title="Add to Calendar" class="addthisevent" id="{{ page.id }}" data-track="_gaq.push(['_trackEvent','AddtoCalendar','click','ate-calendar'])">
+  Add to Calendar
+  <span class="_start">{{ page.event.local_start_at | date: '%m/%d/%Y %H:%M:%S' }} </span>
+  <span class="_end">{{ page.event.local_end_at | date: '%m/%d/%Y %H:%M:%S' }}</span>
+  <span class="_zonecode">15</span>
+  <span class="_summary">{{ page.headline }}</span>
+  <span class="_description">Check {{ page.event.full_url }} for more info</span>
+  <span class="_location">{{ page.event.venue_address.one_line }}</span>
+  <span class="_organizer">{{ page.event.contact_name }}</span>
+  <span class="_organizer_email"> {{ page.event.contact_email }}</span>
+  <span class="_facebook_event">{{ page.event.facebook_url }}</span>
+  <span class="_all_day_event">{% if event.event.is_multi_day? %}TRUE{% else %}FALSE{% endif %}</span>
+  <span class="_date_format">MM/DD/YYYY</span>
+</a>
+
+{% endif %}
+
+<!--Scripts for AddThisEvent -->
+<script type="text/javascript" src="addtocal.js">      
+  addthisevent.settings({
+    license   : "aao8iuet5zp9iqw5sm9z",
+    mouse     : false,
+    css       : false,
+    outlook   : {show:true, text:"Outlook Calendar"},
+    google    : {show:true, text:"Google Calendar"},
+    yahoo     : {show:true, text:"Yahoo Calendar"},
+    hotmail   : {show:true, text:"Hotmail Calendar"},
+    ical      : {show:true, text:"iCal Calendar"},
+    facebook  : {show:true, text:"Facebook Event"},
+    dropdown  : {order:"outlook,google,ical"},
+    callback  : ""
+  });
+</script>
