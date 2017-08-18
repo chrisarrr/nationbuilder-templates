@@ -1,5 +1,5 @@
 {% if page.type_name == "Event" %}
-<span class="addtocalendar atc-style-rpcvw">
+<span class="addtocalendar atc-style-blue">
   <a class="atcb-link" title="Click here to add this event to your Google, Yahoo, iCal or Outlook calendar" id="{{ page.slug }}"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i><span class="desktop-visible right">&nbsp;&nbsp;Add to Calendar</span></a>
   <var class="atc_event" id="{{ page.slug }}">
     <var class="atc_date_start">{{ page.event.local_start_at | date: '%m/%d/%Y %H:%M:%S' }}</var>
@@ -13,7 +13,7 @@
   </var>
 </span>
 {% else %}
-<span class="addtocalendar atc-style-rpcvw">
+<span class="addtocalendar atc-style-blue">
   <a class="atcb-link" title="Click here to add this event to your Google, Yahoo, iCal or Outlook calendar" id="{{ event.name }}"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i><span class="desktop-visible right">&nbsp;&nbsp;Add to Calendar</span></a>
   <var class="atc_event" id="{{ event.slug }}">
     <var class="atc_date_start">{{ event.event.local_start_at | date: '%m/%d/%Y %H:%M:%S' }}</var>
