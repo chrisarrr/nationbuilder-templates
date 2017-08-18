@@ -1,52 +1,30 @@
 {% if page.type_name == "Calendar" or page.is_homepage? == true %}
-
-<a href="{{ event.full_url }}" title="Add to Calendar" class="addthisevent" id="{{ event.id }}">
-  Add to Calendar
-  <span class="_start">{{ event.event.local_start_at | date: '%m/%d/%Y %H:%M:%S' }} </span>
-  <span class="_end">{{ event.event.local_end_at | date: '%m/%d/%Y %H:%M:%S' }}</span>
-  <span class="_zonecode">15</span>
-  <span class="_summary">{{ event.headline }}</span>
-  <span class="_description">Check {{ event.full_url }} for more info</span>
-  <span class="_location">{{ event.event.venue_address.one_line }}</span>
-  <span class="_organizer">{{ event.event.contact_name }}</span>
-  <span class="_organizer_email"> {{ event.event.contact_email }}</span>
-  <span class="_facebook_event">{{ event.event.facebook_url }}</span>
-  <span class="_all_day_event">{% if event.event.is_multi_day? %}TRUE{% else %}FALSE{% endif %}</span>
-  <span class="_date_format">MM/DD/YYYY</span>
-</a>
-
+<span class="addtocalendar atc-style-rpcvw">
+  <a class="atcb-link" title="Click here to add this event to your Google, Yahoo, iCal or Outlook calendar" id="{{ event.name }}"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i><span class="desktop-visible right">&nbsp;&nbsp;Add to Calendar</span></a>
+  <var class="atc_event" id="{{ event.slug }}">
+    <var class="atc_date_start">{{ event.event.local_start_at | date: '%m/%d/%Y %H:%M:%S' }}</var>
+    <var class="atc_date_end">{{ event.event.local_end_at | date: '%m/%d/%Y %H:%M:%S' }}</var>
+    <var class="atc_timezone">America/New_York</var>
+    <var class="atc_title">{{ event.headline }}</var>
+    <var class="atc_description">Check {{ event.full_url }} for the latest info.</var>
+    <var class="atc_location">{{ event.event.venue_address.one_line }}</var>
+    <var class="atc_organizer">{{ event.event.contact_name }}</var>
+    <var class="atc_organizer_email">{{ event.event.contact_email }}</var>
+  </var>
+</span>
 {% else %}
-
-<a href="{{ page.full_url }}" title="Add to Calendar" class="addthisevent" id="{{ page.id }}">
-  Add to Calendar
-  <span class="_start">{{ page.event.local_start_at | date: '%m/%d/%Y %H:%M:%S' }} </span>
-  <span class="_end">{{ page.event.local_end_at | date: '%m/%d/%Y %H:%M:%S' }}</span>
-  <span class="_zonecode">15</span>
-  <span class="_summary">{{ page.headline }}</span>
-  <span class="_description">Check {{ page.full_url }} for more info</span>
-  <span class="_location">{{ page.event.venue_address.one_line }}</span>
-  <span class="_organizer">{{ page.event.contact_name }}</span>
-  <span class="_organizer_email"> {{ page.event.contact_email }}</span>
-  <span class="_facebook_event">{{ page.event.facebook_url }}</span>
-  <span class="_all_day_event">{% if event.event.is_multi_day? %}TRUE{% else %}FALSE{% endif %}</span>
-  <span class="_date_format">MM/DD/YYYY</span>
-</a>
-
+<span class="addtocalendar atc-style-rpcvw">
+  <a class="atcb-link" title="Click here to add this event to your Google, Yahoo, iCal or Outlook calendar" id="{{ page.slug }}"><i class="fa fa-calendar-plus-o" aria-hidden="true"></i><span class="desktop-visible right">&nbsp;&nbsp;Add to Calendar</span></a>
+  <var class="atc_event" id="{{ page.slug }}">
+    <var class="atc_date_start">{{ page.event.local_start_at | date: '%m/%d/%Y %H:%M:%S' }}</var>
+    <var class="atc_date_end">{{ page.event.local_end_at | date: '%m/%d/%Y %H:%M:%S' }}</var>
+    <var class="atc_timezone">America/New_York</var>
+    <var class="atc_title">{{ page.headline }}</var>
+    <var class="atc_description">Check {{ page.full_url }} for the latest info.</var>
+    <var class="atc_location">{{ page.event.venue_address.one_line }}</var>
+    <var class="atc_organizer">{{ page.event.contact_name }}</var>
+    <var class="atc_organizer_email">{{ page.event.contact_email }}</var>
+  </var>
+</span>
 {% endif %}
 
-<!--Scripts for AddThisEvent , go to https://www.addevent.com/ to get license # and addtocal.js file. Style css accordingly -->
-<script type="text/javascript" src="addtocal.js">      
-  addthisevent.settings({
-    license   : "insertlicensenumberhere", 
-    mouse     : false,
-    css       : false,
-    outlook   : {show:true, text:"Outlook Calendar"},
-    google    : {show:true, text:"Google Calendar"},
-    yahoo     : {show:true, text:"Yahoo Calendar"},
-    hotmail   : {show:true, text:"Hotmail Calendar"},
-    ical      : {show:true, text:"iCal Calendar"},
-    facebook  : {show:true, text:"Facebook Event"},
-    dropdown  : {order:"outlook,google,ical"},
-    callback  : ""
-  });
-</script>
